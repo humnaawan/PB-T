@@ -20,22 +20,22 @@ def getRiskCol(loanStatus, returnCoversionDict= False):
                             
     
     """
-    great= ["Current", "Fully Paid", "Issued", 'Does not meet the credit policy. Status:Fully Paid']
+    great= ["Fully Paid",'Does not meet the credit policy. Status:Fully Paid']
 
-    unsure= ["Charged Off", "Does not meet the credit policy. Status:Charged Off", 
-             "In Grace Period", 
-             "Late (16-30 days)", "Late (31-120 days)"]
-    bad= ["Default"]
+    unsure= ["In Grace Period", 
+             "Late (16-30 days)", "Late (31-120 days)",
+            "Current",  "Issued"]
+    bad= ["Default", "Charged Off", "Does not meet the credit policy. Status:Charged Off", ]
 
     conversionDict= {}
     #for status in great:
     #    conversionDict[status]= 'No'
     for status in bad:
-        conversionDict[status]= 'Yes'
+        conversionDict[status]= 'Default'
     for status in unsure:
         conversionDict[status]= 'Maybe'
     for status in great:
-        conversionDict[status]= 'No'
+        conversionDict[status]= 'NotDefault'
 
     risk= loanStatus.copy()
     for entry in np.unique(loanStatus):
