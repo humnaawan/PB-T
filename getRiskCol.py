@@ -28,8 +28,7 @@ def getRiskCol(loanStatus, returnCoversionDict= False):
     bad= ["Default", "Charged Off", "Does not meet the credit policy. Status:Charged Off", ]
 
     conversionDict= {}
-    #for status in great:
-    #    conversionDict[status]= 'No'
+    
     for status in bad:
         conversionDict[status]= 'Default'
     for status in unsure:
